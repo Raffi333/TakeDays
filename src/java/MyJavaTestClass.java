@@ -1,2 +1,3 @@
-package PACKAGE_NAME;public class MyJavaTestClass {
+public class MyJavaTestClass {
+    private String name;
 }
