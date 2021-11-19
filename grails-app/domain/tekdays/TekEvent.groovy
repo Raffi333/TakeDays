@@ -7,7 +7,7 @@ class TekEvent {
     String venue
     Date startDate
     Date endDate
-     String description
+    String description
 
     static constraints = {
         name()

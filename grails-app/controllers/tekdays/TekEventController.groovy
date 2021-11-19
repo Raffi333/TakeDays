@@ -1,7 +1,7 @@
 package tekdays
 
 
-class TekEventController {
+public class TekEventController {
 
-    def scaffold = new TekEvent()
+    TekEvent scaffold = new TekEvent()
 }

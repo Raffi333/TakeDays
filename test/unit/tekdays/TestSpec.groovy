@@ -6,8 +6,8 @@ import spock.lang.Specification
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
-@TestFor(TekEvent)
-class TekEventSpec extends Specification {
+@TestFor(Test)
+class TestSpec extends Specification {
 
     def setup() {
     }
