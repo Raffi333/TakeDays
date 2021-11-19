@@ -1,3 +1,4 @@
+<%@ page import="tekdays.TekEvent" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -117,7 +118,7 @@
 					</g:each>
 				</ul>
 			</div>
-			<h1>Ok</h1>
+
 		</div>
 	</body>
 </html>
