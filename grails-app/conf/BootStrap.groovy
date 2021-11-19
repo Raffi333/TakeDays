@@ -1,4 +1,4 @@
-import tekdays.*
+import tekdays.TekEvent
 
 class BootStrap {
 
