@@ -7,12 +7,36 @@ class TekEvent {
     String venue
     Date startDate
     Date endDate
-    String description
+     String description
 
     static constraints = {
+        name()
+        city()
+        description(maxSize: 5000)
+        organizer()
+        venue()
+        startDate()
+        endDate()
     }
 
-    String toString(){
-        "$name, $city"
+//    @Override
+//    String toString() {
+//        "$name, $city"
+//    }
+
+
+    @Override
+    public String toString() {
+        return "TekEvent{" +
+                "id=" + id +
+                ", version=" + version +
+                ", city='" + city + '\'' +
+                ", name='" + name + '\'' +
+                ", organizer='" + organizer + '\'' +
+                ", venue='" + venue + '\'' +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", description='" + description + '\'' +
+                '}';
     }
 }
