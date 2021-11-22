@@ -3,11 +3,13 @@ package tekdays
 class TekEvent {
     String city
     String name
-    String organizer
+    TekUser organizer
     String venue
     Date startDate
     Date endDate
     String description
+
+    static hasMany = [volunteers: TekUser]
 
     static constraints = {
         name()
@@ -17,7 +19,9 @@ class TekEvent {
         venue()
         startDate()
         endDate()
+
     }
+
 
 //    @Override
 //    String toString() {
@@ -28,8 +32,6 @@ class TekEvent {
     @Override
     public String toString() {
         return "TekEvent{" +
-                "id=" + id +
-                ", version=" + version +
                 ", city='" + city + '\'' +
                 ", name='" + name + '\'' +
                 ", organizer='" + organizer + '\'' +
@@ -39,4 +41,5 @@ class TekEvent {
                 ", description='" + description + '\'' +
                 '}';
     }
+
 }
