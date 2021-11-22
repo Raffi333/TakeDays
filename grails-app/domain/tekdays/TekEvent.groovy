@@ -9,9 +9,9 @@ class TekEvent {
     Date endDate
     String description
 
-    static hasMany = [volunteers: TekUser, respondents : String]
+    static def hasMany = [volunteers: TekUser, respondents: String, sponsors: Sponsor]
 
-    static constraints = {
+    static def constraints = {
         name()
         city()
         description(maxSize: 5000)

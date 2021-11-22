@@ -11,7 +11,7 @@ class TekUser {
     String website
     String bio
 
-    //static belongsTo = TekEvent
+    static def belongsTo = TekEvent
     static def constraints = {
         fullName()
         userName()
