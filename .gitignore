@@ -130,3 +130,9 @@ coverage-error.log
 # Jasper Reports
 *.jasper
 /web-app/reports/*.pdf
+
+
+
+#
+devDb.lock.db
+devDb.trace.db
