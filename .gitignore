@@ -136,3 +136,4 @@ coverage-error.log
 #
 devDb.lock.db
 devDb.trace.db
+devDb.h2.db

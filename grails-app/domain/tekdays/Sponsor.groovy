@@ -7,14 +7,18 @@ class Sponsor {
     byte[] logo
 
 
-    static def hasMany = [events: TekEvent]
-    static def belongsTo = TekEvent
+    static hasMany = [sponsorships: Sponsorship]
+    static belongsTo = TekEvent
 
     static def constraints = {
+        //name validator: {if (!it.equals("hello")) return "e"}
+//        name inList: ["hayk", "aram"]
         name blank: false
         website blank: false, url: true
         description nullable: true, maxSize: 5000
         logo nullable: true, maxSize: 1000000
+        sponsorships nullable: true
+
     }
 
 

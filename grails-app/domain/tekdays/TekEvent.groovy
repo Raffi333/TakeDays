@@ -9,7 +9,8 @@ class TekEvent {
     Date endDate
     String description
 
-    static def hasMany = [volunteers: TekUser, respondents: String, sponsors: Sponsor]
+    static def hasMany = [volunteers: TekUser, respondents: String, sponsors: Sponsorship, tasks: Task, messages: TekMessage]
+    //static belongsTo = TekEvent
 
     static def constraints = {
         name()
@@ -19,7 +20,8 @@ class TekEvent {
         venue()
         startDate()
         endDate()
-
+       tasks nullable: true
+        messages nullable: true
     }
 
 
