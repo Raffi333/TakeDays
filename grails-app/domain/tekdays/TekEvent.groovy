@@ -16,7 +16,7 @@ class TekEvent {
         name()
         city()
         description(maxSize: 5000)
-        organizer()
+        organizer nullable: true
         venue()
         startDate()
         endDate()

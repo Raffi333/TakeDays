@@ -11,6 +11,7 @@ class TekUser {
     String website
     String bio
 
+
     static def belongsTo = TekEvent
     static def constraints = {
         fullName()
@@ -19,6 +20,7 @@ class TekUser {
         website()
         bio maxSize: 5000
     }
+
 
     @Override
     String toString() {
