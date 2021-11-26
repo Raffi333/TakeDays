@@ -1,5 +1,6 @@
 package tekdays
 
+
 class TekMessage {
     String subject
     String content
