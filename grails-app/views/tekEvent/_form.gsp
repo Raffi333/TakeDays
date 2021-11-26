@@ -4,6 +4,7 @@
 
 <div class="fieldcontain ${hasErrors(bean: tekEventInstance, field: 'name', 'error')} required">
 	<label for="name">
+		${str}
 		<g:message code="tekEvent.name.label" default="Name" />
 		<span class="required-indicator">*</span>
 	</label>
@@ -68,9 +69,9 @@
 <div class="fieldcontain ${hasErrors(bean: tekEventInstance, field: 'tasks', 'error')} ">
 	<label for="tasks">
 		<g:message code="tekEvent.tasks.label" default="Tasks" />
-		
+
 	</label>
-	
+
 <ul class="one-to-many">
 <g:each in="${tekEventInstance?.tasks?}" var="t">
     <li><g:link controller="task" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></li>
@@ -86,9 +87,9 @@
 <div class="fieldcontain ${hasErrors(bean: tekEventInstance, field: 'messages', 'error')} ">
 	<label for="messages">
 		<g:message code="tekEvent.messages.label" default="Messages" />
-		
+
 	</label>
-	
+
 <ul class="one-to-many">
 <g:each in="${tekEventInstance?.messages?}" var="m">
     <li><g:link controller="tekMessage" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></li>
@@ -104,18 +105,18 @@
 <div class="fieldcontain ${hasErrors(bean: tekEventInstance, field: 'respondents', 'error')} ">
 	<label for="respondents">
 		<g:message code="tekEvent.respondents.label" default="Respondents" />
-		
+
 	</label>
-	
+
 
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: tekEventInstance, field: 'sponsors', 'error')} ">
 	<label for="sponsors">
 		<g:message code="tekEvent.sponsors.label" default="Sponsors" />
-		
+
 	</label>
-	
+
 <ul class="one-to-many">
 <g:each in="${tekEventInstance?.sponsors?}" var="s">
     <li><g:link controller="sponsorship" action="show" id="${s.id}">${s?.encodeAsHTML()}</g:link></li>
@@ -131,7 +132,7 @@
 <div class="fieldcontain ${hasErrors(bean: tekEventInstance, field: 'volunteers', 'error')} ">
 	<label for="volunteers">
 		<g:message code="tekEvent.volunteers.label" default="Volunteers" />
-		
+
 	</label>
 	<g:select name="volunteers" from="${tekdays.TekUser.list()}" multiple="multiple" optionKey="id" size="5" value="${tekEventInstance?.volunteers*.id}" class="many-to-many"/>
 

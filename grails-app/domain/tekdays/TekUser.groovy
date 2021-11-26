@@ -1,7 +1,5 @@
 package tekdays
 
-import groovy.transform.ToString
-
 class TekUser {
 
     String fullName
@@ -23,7 +21,7 @@ class TekUser {
 
 
     @Override
-    String toString() {
-        return fullName
+     String toString() {
+        return "${fullName}"
     }
 }

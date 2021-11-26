@@ -34,12 +34,10 @@ class TekEvent {
     @Override
     public String toString() {
         return "TekEvent{" +
-                ", city='" + city + '\'' +
+                "city='" + city + '\'' +
                 ", name='" + name + '\'' +
                 ", organizer='" + organizer + '\'' +
                 ", venue='" + venue + '\'' +
-                ", startDate=" + startDate +
-                ", endDate=" + endDate +
                 ", description='" + description + '\'' +
                 '}';
     }

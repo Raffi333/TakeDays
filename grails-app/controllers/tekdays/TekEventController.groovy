@@ -12,7 +12,7 @@ class TekEventController {
 
     def index(Integer max) {
 //        render('o')
-  //      redirect(action: 'create',params: [author: "Stephen King"])
+        //      redirect(action: 'create',params: [author: "Stephen King"])
 
 
 //        for(int i in 1..500) {
@@ -27,9 +27,8 @@ class TekEventController {
 //
 //        }
 //        println max=5
-
         params.max = Math.min(max ?: 10, 100)
-        respond TekEvent.list(params), model: [tekEventInstanceCount: TekEvent.count()]
+        return respond(TekEvent.list(params), model: [tekEventInstanceCount: TekEvent.count()])
     }
 
 
@@ -39,7 +38,7 @@ class TekEventController {
 
     def create() {
 //        return ["tekEventInstance": new TekEvent(params)]
-//        respond new TekEvent(params)
+        respond new TekEvent(params)
     }
 
     @Transactional
@@ -54,14 +53,15 @@ class TekEventController {
             return
         }
 
-        tekEventInstance.save flush: true
+        tekEventInstance.save(flush: true)
+
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'tekEvent.label', default: 'TekEvent'), tekEventInstance.id])
-                redirect tekEventInstance
+                redirect(tekEventInstance)
             }
-            '*' { respond tekEventInstance, [status: CREATED] }
+            '*' { respond (tekEventInstance, [status: CREATED]) }
         }
     }
 

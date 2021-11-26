@@ -24,19 +24,19 @@
 			<table>
 			<thead>
 					<tr>
-					
+
 						<g:sortableColumn property="name" title="${message(code: 'tekEvent.name.label', default: 'Name')}" />
-					
+
 						<g:sortableColumn property="city" title="${message(code: 'tekEvent.city.label', default: 'City')}" />
-					
+
 						<g:sortableColumn property="description" title="${message(code: 'tekEvent.description.label', default: 'Description')}" />
-					
+
 						<th><g:message code="tekEvent.organizer.label" default="Organizer" /></th>
-					
+
 						<g:sortableColumn property="venue" title="${message(code: 'tekEvent.venue.label', default: 'Venue')}" />
-					
+
 						<g:sortableColumn property="startDate" title="${message(code: 'tekEvent.startDate.label', default: 'Start Date')}" />
-					
+
 					</tr>
 				</thead>
 				<tbody>
