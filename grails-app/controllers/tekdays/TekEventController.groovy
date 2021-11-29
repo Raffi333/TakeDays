@@ -1,11 +1,16 @@
 package tekdays
 
+import org.springframework.beans.factory.annotation.Autowire
+import org.springframework.beans.factory.annotation.Autowired
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class TekEventController {
+
+
+    TaskService taskService
 
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
@@ -27,6 +32,8 @@ class TekEventController {
 //
 //        }
 //        println max=5
+
+
         params.max = Math.min(max ?: 10, 100)
         return respond(TekEvent.list(params), model: [tekEventInstanceCount: TekEvent.count()])
     }
@@ -54,6 +61,7 @@ class TekEventController {
         }
 
         tekEventInstance.save(flush: true)
+        taskService.addDefaultTasks(tekEventInstance)
 
 
         request.withFormat {
@@ -61,7 +69,7 @@ class TekEventController {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'tekEvent.label', default: 'TekEvent'), tekEventInstance.id])
                 redirect(tekEventInstance)
             }
-            '*' { respond (tekEventInstance, [status: CREATED]) }
+            '*' { respond(tekEventInstance, [status: CREATED]) }
         }
     }
 

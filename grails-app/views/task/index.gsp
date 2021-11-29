@@ -23,33 +23,33 @@
 			<table>
 			<thead>
 					<tr>
-					
+
 						<g:sortableColumn property="title" title="${message(code: 'task.title.label', default: 'Title')}" />
-					
+
 						<g:sortableColumn property="notes" title="${message(code: 'task.notes.label', default: 'Notes')}" />
-					
+
 						<th><g:message code="task.assignedTo.label" default="Assigned To" /></th>
-					
+
 						<g:sortableColumn property="dueDate" title="${message(code: 'task.dueDate.label', default: 'Due Date')}" />
-					
+
 						<th><g:message code="task.event.label" default="Event" /></th>
-					
+
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${taskInstanceList}" status="i" var="taskInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					
+
 						<td><g:link action="show" id="${taskInstance.id}">${fieldValue(bean: taskInstance, field: "title")}</g:link></td>
-					
+
 						<td>${fieldValue(bean: taskInstance, field: "notes")}</td>
-					
+
 						<td>${fieldValue(bean: taskInstance, field: "assignedTo")}</td>
-					
+
 						<td><g:formatDate date="${taskInstance.dueDate}" /></td>
-					
+
 						<td>${fieldValue(bean: taskInstance, field: "event")}</td>
-					
+
 					</tr>
 				</g:each>
 				</tbody>

@@ -1,4 +1,3 @@
-import grails.util.GrailsUtil
 import tekdays.Sponsor
 import tekdays.Sponsorship
 import tekdays.TekEvent
@@ -9,7 +8,10 @@ class BootStrap {
 
     def init = { servletContext ->
         println("Start")
-        println GrailsUtil.environment
+
+
+
+
         if (!TekEvent.get(1)){
             new TekUser(fullName: 'John Doe',
                     userName: 'jdoe',
@@ -94,7 +96,6 @@ class BootStrap {
 
 
         }
-
 
 
     }

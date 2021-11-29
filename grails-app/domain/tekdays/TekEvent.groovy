@@ -20,7 +20,7 @@ class TekEvent {
         venue()
         startDate()
         endDate()
-       tasks nullable: true
+        tasks nullable: true
         messages nullable: true
     }
 
@@ -33,13 +33,8 @@ class TekEvent {
 
     @Override
     public String toString() {
-        return "TekEvent{" +
-                "city='" + city + '\'' +
-                ", name='" + name + '\'' +
-                ", organizer='" + organizer + '\'' +
-                ", venue='" + venue + '\'' +
-                ", description='" + description + '\'' +
-                '}';
+        return "city='" + city + '\'' +
+                ", name='" + name + '\'';
     }
 
 }

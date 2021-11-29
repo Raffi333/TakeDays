@@ -24,4 +24,19 @@ class TekUser {
      String toString() {
         return "${fullName}"
     }
+
+
+//    @Override
+//    public String toString() {
+//        return "TekUser{" +
+//                "id=" + id +
+//                ", version=" + version +
+//                ", fullName='" + fullName + '\'' +
+//                ", userName='" + userName + '\'' +
+//                ", password='" + password + '\'' +
+//                ", email='" + email + '\'' +
+//                ", website='" + website + '\'' +
+//                ", bio='" + bio + '\'' +
+//                '}';
+//    }
 }
