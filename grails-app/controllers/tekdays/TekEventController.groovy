@@ -1,13 +1,20 @@
 package tekdays
 
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowire
 import org.springframework.beans.factory.annotation.Autowired
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
+
 @Transactional(readOnly = true)
 class TekEventController {
+    private static final Logger LOGGER = LoggerFactory.getLogger(TekEventController.class)
+
 
 
     TaskService taskService
@@ -16,6 +23,8 @@ class TekEventController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
+
+        LOGGER.info("message")
 //        render('o')
         //      redirect(action: 'create',params: [author: "Stephen King"])
 

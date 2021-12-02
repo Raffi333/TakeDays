@@ -64,10 +64,14 @@
 					<span id="event-label" class="property-label"><g:message code="tekMessage.event.label" default="Event" /></span>
 					
 						<span class="property-value" aria-labelledby="event-label"><g:link controller="tekEvent" action="show" id="${tekMessageInstance?.event?.id}">${tekMessageInstance?.event?.encodeAsHTML()}</g:link></span>
-					
+
 				</li>
 				</g:if>
-			
+
+
+
+
+
 			</ol>
 			<g:form url="[resource:tekMessageInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">

@@ -16,7 +16,7 @@ class TekUser {
         userName()
         email()
         website()
-        bio maxSize: 5000
+        bio maxSize: 5000,nullable: false
     }
 
 

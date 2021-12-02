@@ -6,6 +6,8 @@ class Task {
     Date dueDate
     TekUser assignedTo
     TekEvent event
+    Boolean completed
+
 
     static belongsTo = TekEvent
     static constraints = {
@@ -13,6 +15,7 @@ class Task {
         notes blank: true, nullable: true, maxSize: 5000
         assignedTo nullable: true
         dueDate nullable: true
+        completed nullable: true
     }
 
 }

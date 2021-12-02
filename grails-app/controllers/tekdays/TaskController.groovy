@@ -1,12 +1,15 @@
 package tekdays
 
-
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class TaskController {
+
+//    private static final Logger LOGGER = LoggerFactory.getLogger(TaskController.class)
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -25,6 +28,7 @@ class TaskController {
 
     @Transactional
     def save(Task taskInstance) {
+
         if (taskInstance == null) {
             notFound()
             return

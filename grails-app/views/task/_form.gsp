@@ -37,7 +37,13 @@
 	<g:datePicker name="dueDate" precision="day"  value="${taskInstance?.dueDate}" default="none" noSelection="['': '']" />
 
 </div>
-
+<div class="fieldcontain ${hasErrors(bean: taskInstance, field: 'completed',
+		'error')} ">
+	<label for="completed">
+		<g:message code="task.completed.label" default="Completed" />
+	</label>
+	<g:checkBox name="completed" value="${taskInstance?.completed}" />
+</div>
 <div class="fieldcontain ${hasErrors(bean: taskInstance, field: 'event', 'error')} required">
 	<label for="event">
 		<g:message code="task.event.label" default="Event" />
