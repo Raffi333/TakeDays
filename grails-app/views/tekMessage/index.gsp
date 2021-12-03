@@ -63,5 +63,8 @@
 				<g:paginate total="${tekMessageInstanceCount ?: 0}" />
 			</div>
 		</div>
+
+	<g:link action="ajaxIndex"  >TEST</g:link>
+
 	</body>
 </html>

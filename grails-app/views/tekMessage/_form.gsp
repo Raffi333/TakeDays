@@ -19,6 +19,7 @@
     <g:textField name="subject" class="messageField" required=""
                  value="${tekMessageInstance?.subject}"/>
 </div>
+</div>
 
 <div class="fieldcontain ${hasErrors(bean: tekMessageInstance,
         field: 'content', 'error')} required">

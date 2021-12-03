@@ -1,5 +1,12 @@
 package tekdays
 
+import com.google.gson.GsonBuilder
+import grails.converters.JSON
+import grails.converters.XML
+import grails.web.JSONBuilder
+import groovy.json.JsonBuilder
+
+import java.util.logging.XMLFormatter
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -9,12 +16,32 @@ class TekMessageController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+
 //    def index(Integer max) {
 //        params.max = Math.min(max ?: 10, 100)
 //        respond TekMessage.list(params), model:[tekMessageInstanceCount: TekMessage.count()]
 //    }
 
+
+    def ajaxIndex() {
+        return [tekMessageInstanceList: TekMessage.list()]
+    }
+
+
+    def showDetail() {
+        def tekMessageInstance = TekMessage.get(params.id)
+
+        if (tekMessageInstance) {
+
+            println tekMessageInstance
+            return render(view: "_details", model: [tekMessageInstance: tekMessageInstance])
+        } else {
+            return render("No message found with id: ${params.id}")
+        }
+    }
+
     def index(Integer max) {
+
         params.max = Math.min(max ?: 10, 100)
         List<TekMessage> list
         int count

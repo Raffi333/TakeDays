@@ -15,4 +15,18 @@ class TekMessage {
         parent nullable: true
         author nullable: false
     }
+
+
+    @Override
+    public String toString() {
+        return "TekMessage{" +
+                "id=" + id +
+                ", version=" + version +
+                ", subject='" + subject + '\'' +
+                ", content='" + content + '\'' +
+                ", parent=" + parent +
+                ", event=" + event +
+                ", author=" + author +
+                '}';
+    }
 }
