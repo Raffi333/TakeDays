@@ -31,12 +31,7 @@
 <h1>${event?.name} - Forum Messages</h1>
 
 <div id="messageList">
-    <g:each in="${tekMessageInstanceList}" var="tekMessageInstance">
-        <g:remoteLink action="showDetail" id="${tekMessageInstance?.id}"
-                      update="details">
-            <p>${tekMessageInstance.author.fullName} - ${tekMessageInstance.id}</p>
-        </g:remoteLink>
-    </g:each>
+    <g:messageThread messages="${tekMessageInstanceList}" />
 </div>
 
 <h3>Message Details</h3>
@@ -50,12 +45,18 @@
 <script>
 
     function aa() {
-        $.ajax({
+        jQuery.ajax({
             type: 'POST',
-            url: '/TekDays/tekMessage/showDetail/2',
+            url: '/TekDays/tekMessage/t/3',
+            data: {
+                "VarA": 14,
+                "VarB": 13,
+                "VarC": 12
+            },
             success: function (data, textStatus) {
                 $('#details').html(data);
                 console.log(data)
+                console.log(textStatus)
 
             }, error: function (XMLHttpRequest, textStatus, errorThrown) {
                 console.log("ops")

@@ -28,26 +28,32 @@ class TekMessageController {
     }
 
 
+    def reply () {
+        def parent = TekMessage.get(params.id)
+        def tekMessageInstance = new TekMessage(parent:parent, event:parent.event, subject:"RE: $parent.subject")
+        render view:'create', model:['tekMessageInstance':tekMessageInstance]
+    }
+
+    def Test(){
+            respond(TekMessage.list())
+    }
+
+
+
     def showDetail() {
         def tekMessageInstance = TekMessage.get(params.id)
-
         if (tekMessageInstance) {
-
-            println tekMessageInstance
-            return render(view: "_details", model: [tekMessageInstance: tekMessageInstance])
+            render(template: "details", model: [tekMessageInstance: tekMessageInstance])
         } else {
-            return render("No message found with id: ${params.id}")
+            render "No message found with id: ${params.id}"
         }
     }
 
     def index(Integer max) {
-
         params.max = Math.min(max ?: 10, 100)
-        List<TekMessage> list
-        int count
-        TekEvent event = TekEvent.findById(params.id)
-
-
+        def list
+        def count
+        def event = TekEvent.get(params.id)
         if (event) {
             list = TekMessage.findAllByEvent(event, params)
             count = TekMessage.countByEvent(event)
@@ -55,12 +61,13 @@ class TekMessageController {
             list = TekMessage.list(params)
             count = TekMessage.count()
         }
-        return [tekMessageInstanceList : list,
-                tekMessageInstanceCount: count,
-                event                  : event]
+        render view: 'ajaxIndex', model: [tekMessageInstanceList : list,
+                                          tekMessageInstanceCount: count,
+                                          event                  : event]
     }
 
     def show(TekMessage tekMessageInstance) {
+        println params
         respond tekMessageInstance
     }
 

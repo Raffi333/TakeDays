@@ -14,8 +14,10 @@
 
 <body>
 
+<div id="messageList">
+    <g:messageThread messages="${tekMessageInstanceList}" />
+</div>
 
-
-
+<div id="a"></div>
 </body>
 </html>
