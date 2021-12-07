@@ -8,7 +8,6 @@ class TekDaysTagLib {
 
     def messageThread = {attrs ->
         List<TekMessage> messages = attrs.messages.findAll{msg -> !msg.parent}
-        println messages
         processMessages(messages, 0)
     }
 

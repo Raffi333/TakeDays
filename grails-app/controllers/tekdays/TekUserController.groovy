@@ -1,5 +1,6 @@
 package tekdays
 
+import grails.converters.JSON
 import grails.web.JSONBuilder
 import groovy.json.JsonBuilder
 
@@ -104,5 +105,20 @@ class TekUserController {
     }
 
 
+//    security
+    def login() {
+    }
+
+    def validate() {
+        TekUser user = TekUser.findByUserName(params.username)
+
+        if (user && user.password == params.password) {
+            session.user = user
+            redirect controller: 'tekEvent', action: 'index'
+        } else {
+            flash.message = "OPSSS.. Invalid username and password."
+            return render(view: "login")
+        }
+    }
 
 }

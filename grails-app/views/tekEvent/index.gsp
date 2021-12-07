@@ -62,6 +62,6 @@
 		<g:paginate total="${tekEventInstanceCount ?: 0}" />
 	</div>
 </div>
-<h1>${rh}</h1>
+<h1>${}</h1>
 </body>
 </html>

@@ -35,7 +35,7 @@ class TekMessageController {
     }
 
     def Test(){
-            respond(TekMessage.list())
+            render(TekMessage.list() as JSON)
     }
 
 
@@ -50,7 +50,7 @@ class TekMessageController {
     }
 
     def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
+//        params.max = Math.min(max ?: 50, 100)
         def list
         def count
         def event = TekEvent.get(params.id)
@@ -67,7 +67,7 @@ class TekMessageController {
     }
 
     def show(TekMessage tekMessageInstance) {
-        println params
+        println tekMessageInstance.parent
         respond tekMessageInstance
     }
 
@@ -132,6 +132,8 @@ class TekMessageController {
             notFound()
             return
         }
+         //tekMessageInstance.parent.delete()
+        //TekMessage.deleteAll(parent: tekMessageInstance.parent)
 
         tekMessageInstance.delete flush: true
 
