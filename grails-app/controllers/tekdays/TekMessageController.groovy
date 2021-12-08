@@ -34,10 +34,10 @@ class TekMessageController {
         render view:'create', model:['tekMessageInstance':tekMessageInstance]
     }
 
-    def Test(){
-            render(TekMessage.list() as JSON)
-    }
+    def Test() {
+            render(template: "details", model: [tekMessageInstance: TekMessage.get(4)])
 
+    }
 
 
     def showDetail() {

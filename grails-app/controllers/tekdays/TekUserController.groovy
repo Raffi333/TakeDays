@@ -105,20 +105,6 @@ class TekUserController {
     }
 
 
-//    security
-    def login() {
-    }
 
-    def validate() {
-        TekUser user = TekUser.findByUserName(params.username)
-
-        if (user && user.password == params.password) {
-            session.user = user
-            redirect controller: 'tekEvent', action: 'index'
-        } else {
-            flash.message = "OPSSS.. Invalid username and password."
-            return render(view: "login")
-        }
-    }
 
 }

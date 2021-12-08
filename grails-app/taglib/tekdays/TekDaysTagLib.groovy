@@ -23,4 +23,31 @@ class TekDaysTagLib {
             }
         }
     }
+
+
+
+
+    def loginToggle = {attrs ->
+
+        if (request.getSession(false) && session.user){
+
+            out << "<a class='${attrs.class}' href='${createLink(controller:'authorization', action:'logout')}' >"
+            out << "Logout </a>"
+        } else{
+            out << "<a class='${attrs.class}' href='${createLink(controller:'authorization', action:'login')}'>"
+            out << "Login </a>"
+        }
+
+    }
+
+    def register = {attrs ->
+
+        if (request.getSession(false) && session.user){
+
+        } else{
+            out << "<a class='${attrs.class}' href='${createLink(controller:'authorization', action:'login')}'>"
+            out << "registeration </a>"
+        }
+
+    }
 }
