@@ -39,4 +39,27 @@ class AuthorizationController {
         redirect(uri: '/')
 
     }
+    
+     def registration() {
+    }
+
+    def validate_register(TekUser user) {
+        if (user.password == null || user.userName == null || user == null) {
+            flash.message = "OPSSS.. Invalid username and password."
+            render(view: "registration")
+            return false
+        }
+        if (!TekUser.findByUserName(user.userName)) {
+            user.save()
+            session.user = user
+            redirect(uri: '/')
+        } else {
+            flash.message = "OPSSS.. this user already exists"
+            render(view: "registration")
+        }
+
+    }
+
+    
+    
 }
