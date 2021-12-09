@@ -9,7 +9,7 @@ class SecurityFilters {
                 if (controllerName == null) {
                     return true
                 }
-                List<String> allowedActions = ['login','validate']
+                List<String> allowedActions = ['login','validate','registration','validate_register']
                 if (!session.user && !allowedActions.contains(actionName)) {
 
                     redirect(controller: 'authorization', action: 'login', params: ['cName': controllerName, 'aName': actionName])
