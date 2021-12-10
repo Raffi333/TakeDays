@@ -33,8 +33,7 @@ class TekEvent {
 
     @Override
     public String toString() {
-        return "city='" + city + '\'' +
-                ", name='" + name + '\'';
+        return city + " " + name
     }
 
 }

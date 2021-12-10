@@ -71,7 +71,7 @@ a:hover, a:active {
 }
 
 h1 {
-	color: #48802c;
+	color: #1a1f57;
 	font-weight: normal;
 	font-size: 1.25em;
 	margin: 0.8em 0 0.3em 0;
@@ -106,7 +106,7 @@ img {
 }
 
 .footer {
-	background: #abbf78;
+	background: #b1c2e7;
 	color: #000;
 	clear: both;
 	font-size: 0.8em;
@@ -142,6 +142,7 @@ img {
 }
 
 .nav ul {
+	margin-bottom: 0;
 	overflow: hidden;
 	padding-left: 0;
 	zoom: 1;
@@ -170,7 +171,7 @@ img {
 }
 
 .nav a:focus, .nav a:hover {
-	background-color: #999999;
+	background-color: #5ba2dc;
 	color: #ffffff;
 	outline: none;
 	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
@@ -474,7 +475,7 @@ th.desc a {
 }
 
 th:hover, tr:hover {
-	background: #E1F2B6;
+	background: #bcccef;
 }
 
 /* PAGINATION */

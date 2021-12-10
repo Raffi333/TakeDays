@@ -7,7 +7,7 @@ import grails.transaction.Transactional
 class AuthorizationController {
 
 
-    static allowedMethods = [validate: "POST"]
+    static allowedMethods = [validate: "POST",validate_register:"POST"]
 
     def index() {
         redirect(uri: '/')
@@ -43,8 +43,10 @@ class AuthorizationController {
      def registration() {
     }
 
+    @Transactional
     def validate_register(TekUser user) {
-        if (user.password == null || user.userName == null || user == null) {
+
+        if (user?.password == null || user?.userName == null || user == null) {
             flash.message = "OPSSS.. Invalid username and password."
             render(view: "registration")
             return false

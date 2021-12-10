@@ -22,16 +22,18 @@
     <g:layoutHead/>
 </head>
 
-<body class="container" style="border: 0.2px solid dodgerblue" >
+<body class="container" style="border: 0.2px solid dodgerblue">
 <div id="logo" role="banner"><a href="${createLink(uri: '/')}">
     <img style="width: 100%;height: 400px;background-size:cover " src="${resource(dir: 'images', file: 'log.png')}"
          alt="TekDays"/></a>
 
     <div class="container">
         <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+            <a href="${createLink(uri: '/')}"
+               class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
                 <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-            <g:if test="${session.user}">  <span style="font-size: 25px">${'Welcome ' +session.user+"   to - "} </span> </g:if>
+                <g:if test="${session.user}"><span
+                        style="font-size: 25px">${'Welcome ' + session.user + "   to - "}</span></g:if>
                 <span class="fs-4">TEK DAYS</span>
 
             </a>
