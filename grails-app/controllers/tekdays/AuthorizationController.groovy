@@ -7,7 +7,7 @@ import grails.transaction.Transactional
 class AuthorizationController {
 
 
-    static allowedMethods = [validate: "POST",validate_register:"POST"]
+    static allowedMethods = [validate: "POST", validate_register: "POST"]
 
     def index() {
         redirect(uri: '/')
@@ -27,41 +27,45 @@ class AuthorizationController {
             if (params.cName)
                 redirect controller: "${params.cName}", action: "${params.aName}"
             else
-                redirect( controller: 'tekEvent', action: 'index')
+                redirect(uri: '/')
         } else {
             flash.message = "OPSSS.. Invalid username and password."
-            render (view: 'login', model: [cName: params.cName, aName: params.aName])
+            render(view: 'login', model: [cName: params.cName, aName: params.aName])
         }
     }
 
-    def logout(){
+    def logout() {
         session.user = null
         redirect(uri: '/')
 
     }
-    
-     def registration() {
+
+    def registration() {
     }
 
     @Transactional
     def validate_register(TekUser user) {
-
-        if (user?.password == null || user?.userName == null || user == null) {
-            flash.message = "OPSSS.. Invalid username and password."
-            render(view: "registration")
-            return false
-        }
-        if (!TekUser.findByUserName(user.userName)) {
-            user.save()
-            session.user = user
+        withForm {
+            if (user?.password == null || user?.userName == null || user == null) {
+                flash.message = "OPSSS.. Invalid username and password."
+                render(view: "registration")
+                return false
+            }
+            if (!TekUser.findByUserName(user.userName)) {
+                user.save()
+                session.user = user
+                redirect(uri: '/')
+            } else {
+                flash.message = "OPSSS.. this user already exists"
+                render(view: "registration")
+            }
+        }.invalidToken {
             redirect(uri: '/')
-        } else {
-            flash.message = "OPSSS.. this user already exists"
-            render(view: "registration")
+
         }
+
 
     }
 
-    
-    
+
 }

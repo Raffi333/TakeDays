@@ -10,7 +10,7 @@
     <div class="message">${flash.message}</div>
 </g:if>
 <div>
-    <g:form url="[action: 'validate_register']">
+    <g:form useToken="true" url="[action: 'validate_register']">
         <fieldset class="form">
             <g:render template="form"/>
         </fieldset>

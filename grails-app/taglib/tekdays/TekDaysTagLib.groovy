@@ -1,5 +1,7 @@
 package tekdays
 
+import java.util.stream.Collectors
+
 class TekDaysTagLib {
     //static defaultEncodeAs = [taglib:'html']
     //static encodeAsForTags = [tagName: [taglib:'html'], otherTagName: [taglib:'none']]
@@ -43,6 +45,51 @@ class TekDaysTagLib {
             out << "<a class='${attrs.class}' href='${createLink(controller: 'authorization', action: 'registration')}'>"
             out << "Registeration </a>"
 
+        }
+    }
+
+    def organizerEvents = {
+
+        if (request?.getSession(false) && session?.user) {
+            def events = TekEvent.findAllByOrganizer(session.user)
+            if (events) {
+                out << "<div style='margin-left:25px; margin-top:25px; width:85%'>"
+                out << "<h3>Events you are organizing:</h3>"
+                out << "<ol>"
+                events.each {
+                    out << "<li><a href='"
+                    out << "${createLink(controller: 'tekEvent', action: 'show', id: it.id)}'>"
+                    out << "${it}</a></li>"
+                }
+                out << "</ol>"
+                out << "</div>"
+            }
+        }
+    }
+
+    def volunteerEvents = {
+        if (request.getSession(false) && session.user) {
+            def events = TekEvent.createCriteria().list {
+                volunteers{
+                    eq('id', session.user?.id)
+                }
+            }
+
+
+
+
+            if (events) {
+                out << "<div style='margin-left:25px; margin-top:25px; width:85%'>"
+                out << "<h3>Events you volunteered for:</h3>"
+                out << "<ul>"
+                events.each {
+                    out << "<li><a href='"
+                    out << "${createLink(controller: 'tekEvent', action: 'show', id: it.id)}'>"
+                    out << "${it}</a></li>"
+                }
+                out << "</ul>"
+                out << "</div>"
+            }
         }
     }
 }

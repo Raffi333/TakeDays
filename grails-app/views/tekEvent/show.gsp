@@ -17,6 +17,8 @@
         <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]"/></g:link></li>
         <li><g:link class="create" action="create"><g:message code="default.new.label"
                                                               args="[entityName]"/></g:link></li>
+        <li><g:link class="list" controller="dashboard" action="dashboard"
+                    id="${tekEventInstance.id}">Event Dashboard</g:link></li>
     </ul>
 </div>
 
@@ -93,7 +95,7 @@
 
                 <span class="property-value" aria-labelledby="startDate-label">
                     <g:formatDate format="MMMM dd, yyyy"
-                                  date="${tekEventInstance?.startDate}" /></span>
+                                  date="${tekEventInstance?.startDate}"/></span>
 
             </li>
         </g:if>
@@ -150,12 +152,13 @@
         <g:if test="${tekEventInstance?.sponsors}">
             <li class="fieldcontain">
                 <span id="sponsors-label" class="property-label">
-                    <g:message code="tekEvent.sponsors.label"  default="Sponsors"/>
+                    <g:message code="tekEvent.sponsors.label" default="Sponsors"/>
                 </span>
 
                 <g:each in="${tekEventInstance.sponsors}" var="s">
                     <span class="property-value" aria-labelledby="sponsors-label">
-                        <g:link controller="sponsorship" action="show" id="${s.id}">${s?.sponsor?.encodeAsHTML()}</g:link>
+                        <g:link controller="sponsorship" action="show"
+                                id="${s.id}">${s?.sponsor?.encodeAsHTML()}</g:link>
                     </span>
                 </g:each>
 
@@ -180,7 +183,7 @@
         <g:if test="${tekEventInstance?.messages}">
             <li class="fieldcontain">
                 <span id="messages-label" class="property-label"><g:message
-                        code="tekEvent.messages.label" default="Messages" /></span>
+                        code="tekEvent.messages.label" default="Messages"/></span>
                 <span class="property-value" aria-labelledby="messages-label">
                     <g:link controller="tekMessage" action="index"
                             id="${tekEventInstance.id}">
@@ -188,8 +191,6 @@
                     </g:link></span>
             </li>
         </g:if>
-
-
 
     </ol>
     <g:form url="[resource: tekEventInstance, action: 'delete']" method="DELETE">
