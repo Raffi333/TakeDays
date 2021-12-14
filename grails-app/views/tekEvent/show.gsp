@@ -72,7 +72,8 @@
 
                 <span class="property-value" aria-labelledby="organizer-label">
                     <g:link controller="tekUser" action="show"
-                            id="${tekEventInstance?.organizer?.id}">${tekEventInstance?.organizer?.encodeAsHTML()}</g:link></span>
+                            id="${tekEventInstance?.organizer?.id}">${tekEventInstance?.organizer?.encodeAsHTML()}</g:link>
+                </span>
 
             </li>
         </g:if>

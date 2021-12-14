@@ -1,48 +1,20 @@
 package tekdays
 
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
-import org.springframework.beans.factory.annotation.Autowire
-import org.springframework.beans.factory.annotation.Autowired
-
-import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
-
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import static org.springframework.http.HttpStatus.*
 
 @Transactional(readOnly = true)
 class TekEventController {
     private static final Logger LOGGER = LoggerFactory.getLogger(TekEventController.class)
 
-
-
     TaskService taskService
-
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
-
         LOGGER.info("message")
-//        render('o')
-        //      redirect(action: 'create',params: [author: "Stephen King"])
-
-
-//        for(int i in 1..500) {
-//            new TekEvent(name: 'Gateway Code Camp',
-//                    city: 'Saint Louis, MO',
-//                    organizer: TekUser.findByFullName('John Doe'),
-//                    venue: 'TBD',
-//                    startDate: new Date('11/21/2013'),
-//                    endDate: new Date('11/21/2013'),
-//                    description: '''This conference will bring
-//                coders ...''').save()
-//
-//        }
-//        println max=5
-
-
         params.max = Math.min(max ?: 10, 100)
         return respond(TekEvent.list(params), model: [tekEventInstanceCount: TekEvent.count()])
     }
@@ -56,6 +28,7 @@ class TekEventController {
 //        return ["tekEventInstance": new TekEvent(params)]
         respond new TekEvent(params)
     }
+
 
     @Transactional
     def save(TekEvent tekEventInstance) {

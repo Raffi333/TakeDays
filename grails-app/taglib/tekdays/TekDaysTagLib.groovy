@@ -75,9 +75,6 @@ class TekDaysTagLib {
                 }
             }
 
-
-
-
             if (events) {
                 out << "<div style='margin-left:25px; margin-top:25px; width:85%'>"
                 out << "<h3>Events you volunteered for:</h3>"

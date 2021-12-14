@@ -7,7 +7,27 @@ import grails.transaction.Transactional
 class AuthorizationController {
 
 
-    static allowedMethods = [validate: "POST", validate_register: "POST"]
+    static allowedMethods = [validate: "POST", validate_register: "POST", m1: "get", m2: "POST", m3: "PUT", m4: "DELETE"]
+
+    def m1() {
+        println "GET"
+        render("GET")
+    }
+
+    def m2() {
+        println "POST"
+        render("POST")
+    }
+
+    def m3() {
+        println "PUT"
+        render("PUT")
+    }
+    def m4() {
+        println "DELETE"
+        render("DELETE")
+    }
+
 
     def index() {
         redirect(uri: '/')
@@ -30,6 +50,7 @@ class AuthorizationController {
                 redirect(uri: '/')
         } else {
             flash.message = "OPSSS.. Invalid username and password."
+//            redirect(action: 'login', model: [cName: params.cName, aName: params.aName])
             render(view: 'login', model: [cName: params.cName, aName: params.aName])
         }
     }
