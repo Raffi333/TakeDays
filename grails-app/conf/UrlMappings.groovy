@@ -8,13 +8,13 @@ class UrlMappings {
             data = [1, 2, 3, 5, 9]
         }
         // or         "/user/$action?/$id?(.$format)?"(controller: 'tekUser')
+
 //        or
 //        "/grailsblogs/$year/$month/$day/$entry_name?" {
 //            controller = 'authorization'
 //            action = 'test'
 //            constraints {
 //            }
-//
 //        }
 
 
