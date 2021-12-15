@@ -18,6 +18,10 @@ class TekUserController {
     }
 
     def show(TekUser tekUserInstance) {
+        if (params.id == null) {
+            redirect(action: "index")
+        return
+        }
         respond tekUserInstance
     }
 

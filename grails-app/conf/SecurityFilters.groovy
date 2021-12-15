@@ -4,7 +4,6 @@ class SecurityFilters {
 
         doLogin(controller: '*', action: '*') {
 
-
             before = {
                 if (controllerName == null) {
                     return true

@@ -12,6 +12,6 @@
 </head>
 
 <body>
-<h1>notFound</h1>
+<h1>notFound 404</h1>
 </body>
 </html>

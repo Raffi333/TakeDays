@@ -11,7 +11,7 @@ class AuthorizationController {
 
     def m1() {
         println "GET"
-        render("GET")
+        render(params)
     }
 
     def m2() {

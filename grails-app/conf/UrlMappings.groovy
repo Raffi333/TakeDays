@@ -3,10 +3,14 @@ class UrlMappings {
     static mappings = {
 
 
-        "/user/$id?"(controller: 'tekUser', action: 'show') {
-            format = 'detailed'
+        "/user/$action?/$id?"(controller: 'tekUser') {
             data = [1, 2, 3, 5, 9]
         }
+        "/login"(controller: 'authorization', action: 'login') {
+        }
+        "/registration"(controller: 'authorization', action: 'registration') {
+        }
+
         // or         "/user/$action?/$id?(.$format)?"(controller: 'tekUser')
 
 //        or
@@ -25,6 +29,7 @@ class UrlMappings {
                       PUT   : 'm3',
                       DELETE: 'm4',
             ]
+
         }
 
 
