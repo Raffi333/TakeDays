@@ -13,6 +13,20 @@
     justify-content: center;
     align-items: center;
 }
+#modal_rh{
+
+display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.5);
+}
 
 
     </style>
@@ -220,18 +234,7 @@
 </div>
 
 
-<div id="modal_rh" style="
-display: none; /* Hidden by default */
-position: fixed; /* Stay in place */
-z-index: 1; /* Sit on top */
-padding-top: 100px; /* Location of the box */
-left: 0;
-top: 0;
-width: 100%; /* Full width */
-height: 100%; /* Full height */
-overflow: auto; /* Enable scroll if needed */
-background-color: rgb(0,0,0); /* Fallback color */
-background-color: rgba(0,0,0,0.5);">
+<div id="modal_rh">
     <div class="ddd">
         <div id="volunteerDialog" title="Volunteer for ${tekEventInstance.name}"
              style="position: fixed;background: #f6f7f8;padding: 50px;border-radius: 25px">
@@ -247,7 +250,6 @@ background-color: rgba(0,0,0,0.5);">
 
 </div>
 
-
 <script type="text/javascript">
     var x = 0;
     $(document).ready(function () {
@@ -256,8 +258,8 @@ background-color: rgba(0,0,0,0.5);">
             $('#volunteerDialog').show(100);
             $('#modal_rh').show(100);
         });  $("#cancel_div").click(function () {
-            $('#volunteerDialog').hide(100);
-            $('#modal_rh').hide(100);
+            $('#volunteerDialog').hide();
+            $('#modal_rh').hide();
         });
     });
 </script>

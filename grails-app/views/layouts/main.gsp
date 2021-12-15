@@ -37,7 +37,6 @@
                     <g:if test="${session.user}"><span
                             style="font-size: 25px">${'Welcome ' + session.user + "   to - "}</span></g:if>
                     <span class="fs-4">TEK DAYS</span>
-
                 </a>
                 <br>
 
