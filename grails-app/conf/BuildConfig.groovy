@@ -63,6 +63,7 @@ grails.project.dependency.resolution = {
 //        compile ":searchable:0.6.9"
         // asset-pipeline 2.0+ requires Java 7, use version 1.9.x with Java 6
         compile ":asset-pipeline:2.5.7"
+//        compile ":jquery-ui:1.8.24"
 
         // plugins needed at runtime but not for compilation
         runtime ":hibernate4:4.3.10" // or ":hibernate:3.6.10.18"

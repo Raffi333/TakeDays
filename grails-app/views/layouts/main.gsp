@@ -22,40 +22,47 @@
     <g:layoutHead/>
 </head>
 
-<body class="container" style="border: 0.2px solid dodgerblue">
-<div id="logo" role="banner"><a href="${createLink(uri: '/')}">
-    <img style="width: 100%;height: 400px;background-size:cover " src="${resource(dir: 'images', file: 'log.png')}"
-         alt="TekDays"/></a>
+<body class="">
+<div class="container mb-5 mt-1" style="border: 0.2px solid dodgerblue">
 
-    <div class="container">
-        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-            <a href="${createLink(uri: '/')}"
-               class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-                <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-                <g:if test="${session.user}"><span
-                        style="font-size: 25px">${'Welcome ' + session.user + "   to - "}</span></g:if>
-                <span class="fs-4">TEK DAYS</span>
+    <div id="logo" role="banner"><a href="${createLink(uri: '/')}">
+        <img style="width: 100%;height: 400px;background-size:cover " src="${resource(dir: 'images', file: 'log.png')}"
+             alt="TekDays"/></a>
 
-            </a>
-            <br>
+        <div class="container">
+            <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+                <a href="${createLink(uri: '/')}"
+                   class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+                    <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+                    <g:if test="${session.user}"><span
+                            style="font-size: 25px">${'Welcome ' + session.user + "   to - "}</span></g:if>
+                    <span class="fs-4">TEK DAYS</span>
 
-            <ul class="nav nav-pills">
-                <li class="nav-item"><g:loginToggle class="nav-link"/></li>
-                <li class="nav-item"><g:register class="nav-link"/></li>
+                </a>
+                <br>
 
-            </ul>
-        </header>
+                <ul class="nav nav-pills">
+                    <li class="nav-item"><g:loginToggle class="nav-link"/></li>
+                    <li class="nav-item"><g:register class="nav-link"/></li>
+
+                </ul>
+            </header>
+        </div>
+
     </div>
+    <g:layoutBody/>
+    <div class="footer" role="contentinfo"></div>
+
+    <div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt"
+                                                                       default="Loading&hellip;"/></div>
 
 </div>
-<g:layoutBody/>
-<div class="footer" role="contentinfo"></div>
 
-<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
+
 </body>
 </html>

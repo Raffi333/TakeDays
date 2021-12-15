@@ -3,6 +3,8 @@ class UrlMappings {
     static mappings = {
 
 
+
+
         "/user/$action?/$id?"(controller: 'tekUser') {
             data = [1, 2, 3, 5, 9]
         }
@@ -31,12 +33,18 @@ class UrlMappings {
             ]
 
         }
+        "/events/$nickname"{
+            controller = "tekEvent"
+            action = "show"
 
+        }
 
         "/$controller/$action?/$id?(.$format)?" {
             constraints {
             }
         }
+
+
 
         "/"(view: "/index")
         "500"(view: '/error')

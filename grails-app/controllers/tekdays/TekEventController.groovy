@@ -14,14 +14,31 @@ class TekEventController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
-        LOGGER.info("message")
+          LOGGER.info("message")
         params.max = Math.min(max ?: 10, 100)
         return respond(TekEvent.list(params), model: [tekEventInstanceCount: TekEvent.count()])
     }
 
 
-    def show(TekEvent tekEventInstance) {
-        respond tekEventInstance
+    def show(Long id) {
+        def tekEventInstance
+        if(params.nickname){
+            tekEventInstance = TekEvent.findByNickname(params.nickname)
+        }
+        else {
+            tekEventInstance = TekEvent.get(id)
+        }
+        if (!tekEventInstance) {
+            if(params.nickname){
+                flash.message = "TekEvent not found with nickname ${params.nickname}"
+            }
+            else {
+                flash.message = "TekEvent not found with id $id"
+            }
+            redirect(action: 'index')
+            return
+        }
+        [tekEventInstance: tekEventInstance]
     }
 
     def create() {
@@ -109,5 +126,17 @@ class TekEventController {
             }
             '*' { render status: NOT_FOUND }
         }
+    }
+
+    @Transactional
+    def volunteer() {
+
+        def event = TekEvent.get(params.id)
+        println event
+        event.addToVolunteers(session.user)
+        event.save()
+        println event
+
+        redirect(action: "show",id:event.id )
     }
 }

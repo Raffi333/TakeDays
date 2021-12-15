@@ -8,6 +8,7 @@ class TekEvent {
     Date startDate
     Date endDate
     String description
+    String nickname
 
     static def hasMany = [volunteers: TekUser, respondents: String, sponsors: Sponsorship, tasks: Task, messages: TekMessage]
     //static belongsTo = TekEvent
@@ -22,6 +23,7 @@ class TekEvent {
         endDate()
         tasks nullable: true
         messages nullable: true
+        nickname nullable: true
     }
 
 

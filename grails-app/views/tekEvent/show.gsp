@@ -5,9 +5,22 @@
     <meta name="layout" content="main">
     <g:set var="entityName" value="${message(code: 'tekEvent.label', default: 'TekEvent')}"/>
     <title><g:message code="default.show.label" args="[entityName]"/></title>
+    <style>
+
+.ddd{
+    margin-top: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+    </style>
 </head>
 
 <body>
+
+
 <a href="#show-tekEvent" class="skip" tabindex="-1"><g:message code="default.link.skip.label"
                                                                default="Skip to content&hellip;"/></a>
 
@@ -19,6 +32,7 @@
                                                               args="[entityName]"/></g:link></li>
         <li><g:link class="list" controller="dashboard" action="dashboard"
                     id="${tekEventInstance.id}">Event Dashboard</g:link></li>
+        <li><g:volunteerButton eventId="${tekEventInstance.id}"/></li>
     </ul>
 </div>
 
@@ -204,5 +218,49 @@
         </fieldset>
     </g:form>
 </div>
+
+
+<div id="modal_rh" style="
+display: none; /* Hidden by default */
+position: fixed; /* Stay in place */
+z-index: 1; /* Sit on top */
+padding-top: 100px; /* Location of the box */
+left: 0;
+top: 0;
+width: 100%; /* Full width */
+height: 100%; /* Full height */
+overflow: auto; /* Enable scroll if needed */
+background-color: rgb(0,0,0); /* Fallback color */
+background-color: rgba(0,0,0,0.5);">
+    <div class="ddd">
+        <div id="volunteerDialog" title="Volunteer for ${tekEventInstance.name}"
+             style="position: fixed;background: #f6f7f8;padding: 50px;border-radius: 25px">
+            <g:form name="volunteerForm" action="volunteer">
+                <g:hiddenField name="id" value="${tekEventInstance.id}"/>
+                <p>Welcome to the team! Your help will make a huge difference.</p>
+                <button class="btn btn-outline-success">ok</button>
+
+                <div id="cancel_div" class="btn btn-outline-danger">cancel</div>
+            </g:form>
+        </div>
+    </div>
+
+</div>
+
+
+<script type="text/javascript">
+    var x = 0;
+    $(document).ready(function () {
+        $('#volunteerDialog').hide();
+        $("#volunteerButton").click(function () {
+            $('#volunteerDialog').show(100);
+            $('#modal_rh').show(100);
+        });  $("#cancel_div").click(function () {
+            $('#volunteerDialog').hide(100);
+            $('#modal_rh').hide(100);
+        });
+    });
+</script>
+
 </body>
 </html>

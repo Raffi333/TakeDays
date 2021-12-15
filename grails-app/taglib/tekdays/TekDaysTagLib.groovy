@@ -70,7 +70,7 @@ class TekDaysTagLib {
     def volunteerEvents = {
         if (request.getSession(false) && session.user) {
             def events = TekEvent.createCriteria().list {
-                volunteers{
+                volunteers {
                     eq('id', session.user?.id)
                 }
             }
@@ -89,4 +89,21 @@ class TekDaysTagLib {
             }
         }
     }
+
+
+    def volunteerButton = { attrs ->
+        if (request.getSession(false) && session.user) {
+            def user = session.user.merge()
+            def event = TekEvent.get(attrs.eventId)
+            if (event && !event.volunteers.contains(user)) {
+//                out << "<span id='volunteerSpan' class='btn btn-info'>"
+                out << "<button id='volunteerButton' class='btn btn-outline-primary' type='button'>"
+                out << "Volunteer For This Event"
+                out << "</button>"
+//                out << "</span>"
+            }
+        }
+    }
+
+
 }
