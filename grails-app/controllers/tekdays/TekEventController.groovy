@@ -90,6 +90,8 @@ class TekEventController {
 
         tekEventInstance.save flush: true
 
+
+
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'TekEvent.label', default: 'TekEvent'), tekEventInstance.id])
@@ -130,6 +132,9 @@ class TekEventController {
 
     @Transactional
     def volunteer() {
+
+
+
 
         def event = TekEvent.get(params.id)
         println event

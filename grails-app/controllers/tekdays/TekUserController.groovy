@@ -20,7 +20,7 @@ class TekUserController {
     def show(TekUser tekUserInstance) {
         if (params.id == null) {
             redirect(action: "index")
-        return
+            return
         }
         respond tekUserInstance
     }
@@ -69,6 +69,8 @@ class TekUserController {
         }
 
         tekUserInstance.save flush: true
+        if (session?.user?.id == tekUserInstance.id)
+            session.user = tekUserInstance
 
         request.withFormat {
             form multipartForm {
@@ -107,8 +109,6 @@ class TekUserController {
             '*' { render status: NOT_FOUND }
         }
     }
-
-
 
 
 }

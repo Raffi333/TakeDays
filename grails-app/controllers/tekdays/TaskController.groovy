@@ -24,6 +24,7 @@ class TaskController {
 
     def create() {
         respond new Task(params)
+        //or [taskInstance:new Task(params)]
     }
 
     @Transactional

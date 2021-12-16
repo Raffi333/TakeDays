@@ -6,6 +6,7 @@
 --%>
 
 <%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page import="tekdays.TekEvent" %>
 <html>
 <head>
     <title></title>
@@ -13,5 +14,9 @@
 
 <body>
 <h1>notFound 404</h1>
+
+<f:input bean="tekdays.TekUser" property="TekUser"/>
+
+
 </body>
 </html>

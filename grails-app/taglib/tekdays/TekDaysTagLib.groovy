@@ -92,6 +92,7 @@ class TekDaysTagLib {
 
 
     def volunteerButton = { attrs ->
+        println session.user
         if (request.getSession(false) && session.user) {
             def user = session.user.merge()
             def event = TekEvent.get(attrs.eventId)
