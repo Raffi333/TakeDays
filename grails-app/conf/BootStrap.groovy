@@ -14,8 +14,8 @@ class BootStrap {
 
         if (!TekEvent.get(1)){
             new TekUser(fullName: 'John Doe',
-                    userName: 'jdoe',
-                    password: 't0ps3cr3t',
+                    userName: 'admin',
+                    password: 'admin',
                     email: 'jdoe@johnsgroovyshop.com',
                     website: 'blog.johnsgroovyshop.com',
                     bio: 'John has been programming for over 40 years. ...').save()

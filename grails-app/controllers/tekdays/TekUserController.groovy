@@ -22,6 +22,7 @@ class TekUserController {
             redirect(action: "index")
             return
         }
+
         respond tekUserInstance
     }
 
