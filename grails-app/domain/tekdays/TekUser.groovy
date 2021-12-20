@@ -1,5 +1,9 @@
 package tekdays
 
+import org.hibernate.envers.Audited
+
+@Audited
+
 class TekUser {
 
     String fullName
@@ -24,6 +28,8 @@ class TekUser {
      String toString() {
         return "${fullName}"
     }
+
+
 
 
 //    @Override

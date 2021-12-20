@@ -1,5 +1,8 @@
 package tekdays
 
+import org.hibernate.envers.Audited
+
+@Audited
 class Sponsor {
     String name
     String website

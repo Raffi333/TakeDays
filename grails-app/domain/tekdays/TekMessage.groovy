@@ -1,6 +1,8 @@
 package tekdays
 
+import org.hibernate.envers.Audited
 
+@Audited
 class TekMessage {
     String subject
     String content

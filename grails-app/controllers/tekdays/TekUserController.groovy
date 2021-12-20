@@ -1,18 +1,43 @@
 package tekdays
 
-import grails.converters.JSON
-import grails.web.JSONBuilder
-import groovy.json.JsonBuilder
+
+import grails.transaction.Transactional
+import jline.internal.ShutdownHooks
+import org.grails.datastore.mapping.config.Entity
+import org.hibernate.Session
+import org.hibernate.SessionFactory
+import org.hibernate.envers.AuditReader
+import org.hibernate.envers.AuditReaderFactory
+
+import javax.persistence.EntityManager
+import javax.sound.sampled.AudioFileFormat
 
 import static org.springframework.http.HttpStatus.*
-import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class TekUserController {
 
+    SessionFactory sessionFactory
+
+    EnversService<TekUser> enversService
+
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
+
+//      def d = sessionFactory.currentSession.createSQLQuery("SELECT *  from tek_user_aud")
+//      def d = sessionFactory.currentSession.createCriteria().
+//        println d
+
+
+//        def l = AuditReaderFactory.get(sessionFactory.currentSession)
+//                .createQuery()
+//                .forRevisionsOfEntity(TekUser.class, false, false)
+//                .resultList
+        def l
+     30.times {l = enversService.getAuditedByRevision(it+1);  println l}
+
+
         params.max = Math.min(max ?: 10, 100)
         respond TekUser.list(params), model: [tekUserInstanceCount: TekUser.count()]
     }
