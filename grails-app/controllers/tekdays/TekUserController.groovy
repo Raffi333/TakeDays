@@ -2,28 +2,19 @@ package tekdays
 
 
 import grails.transaction.Transactional
-import jline.internal.ShutdownHooks
-import org.grails.datastore.mapping.config.Entity
-import org.hibernate.Session
 import org.hibernate.SessionFactory
-import org.hibernate.envers.AuditReader
-import org.hibernate.envers.AuditReaderFactory
-
-import javax.persistence.EntityManager
-import javax.sound.sampled.AudioFileFormat
 
 import static org.springframework.http.HttpStatus.*
 
 @Transactional(readOnly = true)
 class TekUserController {
 
-    SessionFactory sessionFactory
-
-    EnversService<TekUser> enversService
+    EnversService enversService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
+//        EnversHelper<TekUser> enversService = new EnversHelper<>(TekUser.class)
 
 //      def d = sessionFactory.currentSession.createSQLQuery("SELECT *  from tek_user_aud")
 //      def d = sessionFactory.currentSession.createCriteria().
@@ -34,9 +25,11 @@ class TekUserController {
 //                .createQuery()
 //                .forRevisionsOfEntity(TekUser.class, false, false)
 //                .resultList
-        def l
-     30.times {l = enversService.getAuditedByRevision(it+1);  println l}
 
+        println enversService.getAuditedByEntityId(TekUser.class,6)
+        println enversService.getAuditedByRevisionId(TekUser.class,6)
+        println enversService.getAllOnlyExist(TekUser.class)
+        println enversService.getAllAudited(TekUser.class)
 
         params.max = Math.min(max ?: 10, 100)
         respond TekUser.list(params), model: [tekUserInstanceCount: TekUser.count()]

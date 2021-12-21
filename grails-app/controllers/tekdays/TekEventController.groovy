@@ -1,19 +1,22 @@
 package tekdays
 
 import grails.transaction.Transactional
+import org.hibernate.SessionFactory
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import static org.springframework.http.HttpStatus.*
 
 @Transactional(readOnly = true)
 class TekEventController {
-    private static final Logger LOGGER = LoggerFactory.getLogger(TekEventController.class)
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(TekEventController.class)
     TaskService taskService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
+
+
           LOGGER.info("message")
         params.max = Math.min(max ?: 10, 100)
         return respond(TekEvent.list(params), model: [tekEventInstanceCount: TekEvent.count()])
