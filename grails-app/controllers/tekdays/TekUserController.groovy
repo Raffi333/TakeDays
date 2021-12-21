@@ -1,8 +1,6 @@
 package tekdays
 
-
 import grails.transaction.Transactional
-import org.hibernate.SessionFactory
 
 import static org.springframework.http.HttpStatus.*
 
@@ -14,22 +12,12 @@ class TekUserController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
-//        EnversHelper<TekUser> enversService = new EnversHelper<>(TekUser.class)
-
-//      def d = sessionFactory.currentSession.createSQLQuery("SELECT *  from tek_user_aud")
-//      def d = sessionFactory.currentSession.createCriteria().
-//        println d
 
 
-//        def l = AuditReaderFactory.get(sessionFactory.currentSession)
-//                .createQuery()
-//                .forRevisionsOfEntity(TekUser.class, false, false)
-//                .resultList
-
-        println enversService.getAuditedByEntityId(TekUser.class,6)
-        println enversService.getAuditedByRevisionId(TekUser.class,6)
-        println enversService.getAllOnlyExist(TekUser.class)
-        println enversService.getAllAudited(TekUser.class)
+//        println enversService.getAuditedByEntityId(TekUser.class,6)
+//        println enversService.getAuditedByRevisionId(TekUser.class,6)
+//        println enversService.getAllOnlyExist(TekUser.class)
+//        println enversService.getAllAudited(TekUser.class)
 
         params.max = Math.min(max ?: 10, 100)
         respond TekUser.list(params), model: [tekUserInstanceCount: TekUser.count()]
