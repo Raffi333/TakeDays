@@ -44,17 +44,17 @@
 				<tbody>
 				<g:each in="${tekMessageInstanceList}" status="i" var="tekMessageInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					
+
 						<td><g:link action="show" id="${tekMessageInstance.id}">${fieldValue(bean: tekMessageInstance, field: "subject")}</g:link></td>
-					
+
 						<td>${fieldValue(bean: tekMessageInstance, field: "content")}</td>
-					
+
 						<td>${fieldValue(bean: tekMessageInstance, field: "parent")}</td>
-					
+
 						<td>${fieldValue(bean: tekMessageInstance, field: "author")}</td>
-					
+
 						<td>${fieldValue(bean: tekMessageInstance, field: "event")}</td>
-					
+
 					</tr>
 				</g:each>
 				</tbody>

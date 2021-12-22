@@ -5,9 +5,17 @@
 // You're free to add application-wide JavaScript to this file, but it's generally better 
 // to create separate JavaScript files as needed.
 //
+
 //= require jquery
+//= require js/jquery.dataTables.js
+//= require js/dataTables.semanticui.js
+//= require js/dataTables.jqueryui.js
+//= require js/dataTables.foundation.js
+//= require js/dataTables.bootstrap4.js
+//= require js/dataTables.bootstrap.js
 //= require_tree .
 //= require_self
+
 
 if (typeof jQuery !== 'undefined') {
 	(function($) {

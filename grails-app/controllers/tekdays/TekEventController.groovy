@@ -11,13 +11,26 @@ class TekEventController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TekEventController.class)
     TaskService taskService
+    DatatablesSourceService datatablesSourceService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+
+
+    def dataTablesRenderer() {
+        def propertiesToRender = ["id", "name", "city", "organizer", "venue", "startDate", "endDate"]
+        def entityName = "TekEvent"
+        println "\n\n\n\n\n\n"
+        println params
+        println "\n\n\n\n\n\n"
+//        println datatablesSourceService.dataTablesSource(propertiesToRender, entityName, params)
+        render datatablesSourceService.dataTablesSource(propertiesToRender, entityName, params)
+    }
+
 
     def index(Integer max) {
 
 
-          LOGGER.info("message")
+        LOGGER.info("message")
         params.max = Math.min(max ?: 10, 100)
         return respond(TekEvent.list(params), model: [tekEventInstanceCount: TekEvent.count()])
     }
@@ -25,17 +38,15 @@ class TekEventController {
 
     def show(Long id) {
         def tekEventInstance
-        if(params.nickname){
+        if (params.nickname) {
             tekEventInstance = TekEvent.findByNickname(params.nickname)
-        }
-        else {
+        } else {
             tekEventInstance = TekEvent.get(id)
         }
         if (!tekEventInstance) {
-            if(params.nickname){
+            if (params.nickname) {
                 flash.message = "TekEvent not found with nickname ${params.nickname}"
-            }
-            else {
+            } else {
                 flash.message = "TekEvent not found with id $id"
             }
             redirect(action: 'index')
@@ -94,7 +105,6 @@ class TekEventController {
         tekEventInstance.save flush: true
 
 
-
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'TekEvent.label', default: 'TekEvent'), tekEventInstance.id])
@@ -137,14 +147,12 @@ class TekEventController {
     def volunteer() {
 
 
-
-
         def event = TekEvent.get(params.id)
         println event
         event.addToVolunteers(session.user)
         event.save()
         println event
 
-        redirect(action: "show",id:event.id )
+        redirect(action: "show", id: event.id)
     }
 }

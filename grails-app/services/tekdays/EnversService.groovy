@@ -2,7 +2,9 @@ package tekdays
 
 import grails.transaction.Transactional
 import org.hibernate.SessionFactory
+import org.hibernate.envers.AuditReader
 import org.hibernate.envers.AuditReaderFactory
+import org.hibernate.envers.query.AuditQueryCreator
 
 import java.util.stream.Collectors
 
@@ -50,4 +52,5 @@ class EnversService {
         List result = listOfAudited
         return result
     }
+
 }

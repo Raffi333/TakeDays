@@ -2,8 +2,8 @@ package tekdays
 
 import org.hibernate.envers.Audited
 
-@Audited
 
+@Audited
 class TekUser {
 
     String fullName

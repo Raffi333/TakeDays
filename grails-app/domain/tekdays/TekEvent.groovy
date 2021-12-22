@@ -1,7 +1,6 @@
 package tekdays
 
 import org.hibernate.envers.Audited
-
 @Audited
 class TekEvent {
     String city
