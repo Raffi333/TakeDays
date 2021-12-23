@@ -24,9 +24,9 @@
                 sPaginationType: "full_numbers",
                 aLengthMenu: [5, 10, 25, 50, 100, 200],
                 iDisplayLength: 10,
-
                 aoColumnDefs: [
                     {
+                        // bSearchable: false,
                         render: function (data, type, full, meta) {
                             if (full) {
                                 return '<a href="${createLink(controller: 'TekEvent', action: 'show')}/' + full[0] + '"class="btn">' + data + '</a>';
@@ -38,12 +38,17 @@
                     },
                     {
                         createdCell: function (td, cellData, rowData, row, col) {
+                            // console.log(td)
+                            // console.log(cellData)
+                            // console.log(rowData)
+                            // console.log(row)
+                            // console.log(col)
                             $(td).attr('style', 'color: red;');
                         },
-                        bSearchable: false,
+                        // bSearchable: false,
                         bSortable: false,
                         visible: true,
-                        aTargets: [1, 2]
+                        aTargets: [1, 2,3]
 
                     }
 

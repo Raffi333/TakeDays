@@ -18,10 +18,8 @@ class TekEventController {
 
     def dataTablesRenderer() {
         def propertiesToRender = ["id", "name", "city", "organizer", "venue", "startDate", "endDate"]
-        def entityName = "TekEvent"
-        println "\n\n\n\n\n\n"
-        println params
-        println "\n\n\n\n\n\n"
+        def entityName = TekEvent.class
+
 //        println datatablesSourceService.dataTablesSource(propertiesToRender, entityName, params)
         render datatablesSourceService.dataTablesSource(propertiesToRender, entityName, params)
     }
