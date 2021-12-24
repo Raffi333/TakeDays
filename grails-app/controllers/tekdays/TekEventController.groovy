@@ -26,8 +26,6 @@ class TekEventController {
 
 
     def index(Integer max) {
-
-
         LOGGER.info("message")
         params.max = Math.min(max ?: 10, 100)
         return respond(TekEvent.list(params), model: [tekEventInstanceCount: TekEvent.count()])

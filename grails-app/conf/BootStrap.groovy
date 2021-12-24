@@ -1,4 +1,5 @@
 import grails.transaction.Transactional
+import org.codehaus.groovy.grails.commons.GrailsApplication
 import tekdays.Sponsor
 import tekdays.Sponsorship
 import tekdays.TekEvent
@@ -6,10 +7,13 @@ import tekdays.TekUser
 
 class BootStrap {
 
+    GrailsApplication grailsApplication
 
     def init = { servletContext ->
         println("Start")
 
+
+//        grailsApplication.getAllArtefacts().each { println it.simpleName}
 
         if (!TekEvent.get(1)) {
 
