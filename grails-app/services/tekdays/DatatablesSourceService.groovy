@@ -1,7 +1,7 @@
 package tekdays
 
 import grails.converters.JSON
-
+import org.apache.commons.lang.math.NumberUtils
 import org.codehaus.groovy.grails.commons.GrailsApplication
 import org.codehaus.groovy.grails.plugins.support.aware.GrailsApplicationAware
 import org.slf4j.Logger
@@ -32,7 +32,7 @@ class DatatablesSourceService implements GrailsApplicationAware {
 
                 if (params["bSearchable_${idx}"] == 'true') {
                     if (prop == "id") {
-                        if (org.apache.commons.lang.math.NumberUtils.isNumber(params.sSearch))
+                        if (NumberUtils.isNumber(params.sSearch))
                             filters << "dt.${prop} = ${params.sSearch}"
                     } else {
                         filters << "dt.${prop} like :filter"

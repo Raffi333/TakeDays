@@ -1,6 +1,6 @@
 package tekdays
 
-
+import java.nio.file.Files
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -34,6 +34,8 @@ class SponsorController {
             respond sponsorInstance.errors, view:'create'
             return
         }
+
+      //params.logo.transferTo(new File("/home/raffi/IdeaProjects/TekDays/web-app/images/img.png"))
 
         sponsorInstance.save flush:true
 

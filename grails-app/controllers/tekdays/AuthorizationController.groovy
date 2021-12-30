@@ -23,6 +23,7 @@ class AuthorizationController {
         println "PUT"
         render("PUT")
     }
+
     def m4() {
         println "DELETE"
         render("DELETE")
@@ -42,11 +43,13 @@ class AuthorizationController {
     def validate() {
         TekUser user = TekUser.findByUserName(params.username)
 
+
         if (user && user.password == params.password) {
+
             session.user = user
-            if (params.cName)
+            if (params.cName) {
                 redirect controller: "${params.cName}", action: "${params.aName}"
-            else
+            } else
                 redirect(uri: '/')
         } else {
             flash.message = "OPSSS.. Invalid username and password."

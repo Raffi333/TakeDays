@@ -12,6 +12,22 @@ class TekEvent {
     String description
     String nickname
 
+
+    static mapping = {
+//        organizer cascade: 'all-delete-orphan'
+//        volunteers cascade: 'all-delete-orphan'
+//        respondents cascade: 'all-delete-orphan'
+//        sponsors cascade: 'all-delete-orphan'
+//        tasks cascade: 'all-delete-orphan'
+//        messages cascade: 'all-delete-orphan'
+
+//        organizer(fetch:'join')
+//        organizer(lazy: false)
+
+//        cache true
+//        organizer cache:'read-only'
+    }
+
     static def hasMany = [volunteers: TekUser, respondents: String, sponsors: Sponsorship, tasks: Task, messages: TekMessage]
     //static belongsTo = TekEvent
 
