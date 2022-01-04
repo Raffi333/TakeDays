@@ -47,10 +47,8 @@
                         "lang": val,
 
                     },
-                    success: function (data, textStatus) {
+                    success: function (data) {
                         window.location = data;
-
-
                     }, error: function (XMLHttpRequest, textStatus, errorThrown) {
                         console.log("ops")
                     }
