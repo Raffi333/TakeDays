@@ -1,12 +1,17 @@
 package tekdays
 
+import grails.async.Promise
 import grails.transaction.Transactional
+import groovy.transform.Synchronized
+import net.sf.ehcache.transaction.xa.OptimisticLockFailureException
 import org.hibernate.Cache
 import org.hibernate.FlushMode
 import org.hibernate.LazyInitializationException
 import org.hibernate.SessionFactory
 import org.hibernate.criterion.Order
 import org.hibernate.engine.profile.Association
+import org.springframework.context.annotation.Scope
+import org.springframework.dao.OptimisticLockingFailureException
 
 import java.lang.reflect.Array
 import java.util.stream.Collector
@@ -16,14 +21,20 @@ import static org.springframework.http.HttpStatus.*
 @Transactional(readOnly = true)
 class TekUserController {
 
+
     static k = 0;
+    static def m = 0;
+    static final Object obj = new Object()
+
 
     EnversService enversService
     SessionFactory sessionFactory
 
+
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     @Transactional
+//    @Synchronized('obj')
     def index(Integer max) {
 //        [
 //                allEntity   : [
@@ -95,29 +106,26 @@ class TekUserController {
 //
 //        ]
 
-
-        long s = System.currentTimeMillis()
-        def c = sessionFactory.getCurrentSession()
-        c.setFlushMode(FlushMode.MANUAL)
-        println c.flushMode
-        def f1 = TekUser.read(1)
-        f1.fullName = '33000'
-        f1.save()
-        println c.flushMode
-
-
-
-//        for (i in u){
-//            println i.organizer.fullName
-//        }
+//        synchronized (this) {
+//        long s = System.currentTimeMillis()
+//        def f1 =TekUser.get(1)
+//
+//
+//
+//        f1.save()
+//        println ".>>>>>>>>>>>>>>>>>>>>>>${k}"
+//
+//        render "${k++}->${m} ->>> ${System.currentTimeMillis() - s} Ms\n"
 
 
-        render "${k++}->${c.flushMode} ->>> ${System.currentTimeMillis() - s} Ms\n"
+//         f1.properties.each { println it.value}
 
-
+        println session
         params.max = Math.min(max ?: 5, 100)
-        //respond TekUser.list(params), model: [tekUserInstanceCount: TekUser.count()]
+        respond TekUser.list(params), model: [tekUserInstanceCount: TekUser.count()]
+//        }
     }
+
 
     def show(TekUser tekUserInstance) {
         if (params.id == null) {
