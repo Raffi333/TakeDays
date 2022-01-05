@@ -8,7 +8,7 @@
 
 <div class="nav" role="navigation">
     <ul>
-        <li><a class="home" href="${createLink(uri: '/')}">Home</a></li>
+        <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label" default="Home"/> </a></li>
         <li><g:link class="create" controller="task" action="create">Create
 
 Task</g:link></li>

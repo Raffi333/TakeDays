@@ -43,7 +43,7 @@
                             // console.log(rowData)
                             // console.log(row)
                             // console.log(col)
-                            $(td).attr('style', 'color: red;');
+                            $(td).attr('style', 'color: #071C76;');
                         },
                         // bSearchable: false,
                         bSortable: false,

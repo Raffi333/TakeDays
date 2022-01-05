@@ -120,7 +120,6 @@ class TekUserController {
 
 //         f1.properties.each { println it.value}
 
-        println session
         params.max = Math.min(max ?: 5, 100)
         respond TekUser.list(params), model: [tekUserInstanceCount: TekUser.count()]
 //        }

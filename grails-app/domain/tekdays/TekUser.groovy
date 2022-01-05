@@ -14,6 +14,9 @@ class TekUser {
     String bio
 
 
+//    transient beforeDelete = {
+//        println "oops"
+//    }
 
 
 
@@ -25,6 +28,7 @@ class TekUser {
         website()
         bio maxSize: 5000,nullable: false
     }
+
 
 
 

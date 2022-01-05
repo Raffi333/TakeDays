@@ -21,9 +21,11 @@
 <g:volunteerEvents/>
 
 
+
 <div class="homeCell">
     <h3>Find a Tek Event</h3>
-
+%{--    <g:message code="my.message"  default="a"/>--}%
+    <g:message code="my.message.test" args="[session?.user?.fullName]"  default="a"/>
     <p>See if there's a technical event in the works that strikes your
     fancy. If there is, you can volunteer to help or just let the
     organizers know that you'd be interested in attending.

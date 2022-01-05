@@ -27,40 +27,20 @@
 
 <div class="container mb-5 mt-1" style="border: 0.2px solid dodgerblue">
 
-    <div id="logo" role="banner"><a href="${createLink(uri: '/')}">
+    <div id="logo" role="banner"><a href='${createLink(uri: "/?lang=${session?.lang != null ? session?.lang : ''}")}'>
         <img style="width: 100%;height: 400px;background-size:cover " src="${resource(dir: 'images', file: 'log.png')}"
              alt="TekDays"/></a>
 
-        <g:select name="lang" class="lang" keys="['en', 'ru', 'hy']" from="['English', 'Русские', 'Հայերեն']"/>
+        <g:select name="lang" class="lang form-select w-25 h-100 m-2 " keys="['en', 'ru', 'hy']"
+                  from="['🇺🇲  English', '🇷🇺  Русские', '🇦🇲  Հայերեն']"/>
 
 
-        <script>
-            $('.lang').click(function () {
 
-                let val = $('.lang').val()
-                console.log(val)
-
-                jQuery.ajax({
-                    type: 'POST',
-                    url: '/TekDays/lang/changeLang',
-                    data: {
-                        "lang": val,
-
-                    },
-                    success: function (data) {
-                        window.location = data;
-                    }, error: function (XMLHttpRequest, textStatus, errorThrown) {
-                        console.log("ops")
-                    }
-                })
-
-            })
-        </script>
 
 
         <div class="container">
             <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-                <a href="${createLink(uri: '/')}"
+                <a href='${createLink(uri: "/?lang=${session?.lang != null ? session?.lang : ''}")}'
                    class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
                     <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
                     <g:if test="${session.user}"><span
@@ -91,6 +71,55 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
+<script>
+
+
+    $('.lang').click(function () {
+
+        let val = $('.lang').val()
+        console.log(val)
+
+        jQuery.ajax({
+            type: 'POST',
+            url: '/TekDays/lang/changeLang',
+            data: {
+                "lang": val,
+            },
+            success: function (data) {
+                window.location = data;
+            }, error: function (XMLHttpRequest, textStatus, errorThrown) {
+                console.log("ops")
+            }
+        })
+
+    })
+
+
+    $('.lang').ready(function () {
+        let val = $('.lang').val()
+        jQuery.ajax({
+            type: 'POST',
+            url: '/TekDays/lang/checkLang',
+            data: {},
+            success: function (data) {
+                let tag = document.querySelectorAll(".lang option")
+                if (data === 'ru') {
+                    tag[1].setAttribute('selected', true)
+                } else if (data === 'hy') {
+                    tag[2].setAttribute('selected', true)
+                } else if (data === 'en') {
+                    tag[0].setAttribute('selected', true)
+                }
+
+                console.log(data)
+                // let tag= document.querySelectorAll(".lang option")
+            }, error: function (XMLHttpRequest, textStatus, errorThrown) {
+                console.log("ops")
+            }
+        })
+    })
+
+</script>
 
 </body>
 </html>
