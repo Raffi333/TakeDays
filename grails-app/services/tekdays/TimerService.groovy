@@ -45,6 +45,8 @@ class TimerService {
             t.schedule(task, 0, period)
 
         } else {
+
+
             println "Task Updated"
             singleTask = true
             t.cancel()
