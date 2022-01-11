@@ -5,6 +5,8 @@ import tekdays.Sponsorship
 import tekdays.TekEvent
 import tekdays.TekUser
 
+import java.lang.management.ManagementFactory
+
 class BootStrap {
 
     GrailsApplication grailsApplication
@@ -14,6 +16,7 @@ class BootStrap {
 
 
 //        grailsApplication.getAllArtefacts().each { println it.simpleName}
+
 
         if (!TekEvent.get(1)) {
 

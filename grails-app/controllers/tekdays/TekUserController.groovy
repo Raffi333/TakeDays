@@ -25,13 +25,16 @@ class TekUserController {
     EnversService enversService
     SessionFactory sessionFactory
     EmailService emailService
-
+    TimerService timerService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     @Transactional
 //    @Synchronized('obj')
     def index(Integer max) {
+
+        timerService.TimerByRH(1,0,0,0)
+
 
 //        [
 //                allEntity   : [
