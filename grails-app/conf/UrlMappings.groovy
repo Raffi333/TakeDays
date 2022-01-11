@@ -22,7 +22,9 @@ class UrlMappings {
 //            constraints {
 //            }
 //        }
+        "/authorization/confirm/$code?"(controller: "authorization",action: "confirm") {
 
+        }
 
         "/api" {
             controller = 'authorization'

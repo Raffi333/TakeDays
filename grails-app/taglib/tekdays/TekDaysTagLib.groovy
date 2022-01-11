@@ -34,7 +34,7 @@ class TekDaysTagLib {
             out << "${message(code: 'logout')}</a>"
         } else {
             out << "<a class='${attrs.class}' href='${createLink(controller: 'authorization', action: 'login')}'>"
-            out << "Login </a>"
+            out << "${message(code: 'login')} </a>"
         }
 
     }
@@ -43,7 +43,7 @@ class TekDaysTagLib {
 
         if (!(request.getSession(false) && session.user)) {
             out << "<a class='${attrs.class}' href='${createLink(controller: 'authorization', action: 'registration')}'>"
-            out << "Registeration </a>"
+            out << "${message(code: 'register')} </a>"
 
         }
     }

@@ -6,6 +6,7 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class AuthorizationController {
 
+    EmailService emailService
 
     static allowedMethods = [validate: "POST", validate_register: "POST", m1: "get", m2: "POST", m3: "PUT", m4: "DELETE"]
 
@@ -76,7 +77,9 @@ class AuthorizationController {
                 return false
             }
             if (!TekUser.findByUserName(user.userName)) {
+                user.confirmCode = UUID.randomUUID().toString()
                 user.save()
+                emailService.sendEmailForConfirmAccount(user)
                 session.user = user
                 redirect(uri: '/')
             } else {
@@ -92,4 +95,24 @@ class AuthorizationController {
     }
 
 
+
+
+    @Transactional
+    def confirm(String code) {
+
+        TekUser user = TekUser.findByConfirmCode(code)
+
+        if (user) {
+            if (!user.confirm) {
+                user.confirm = true
+                user.save()
+                redirect(url: "/")
+            } else {
+                redirect(url: "/")
+            }
+        } else {
+            println "oops"
+            redirect(url: "/")
+        }
+    }
 }

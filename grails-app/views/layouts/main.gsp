@@ -27,7 +27,7 @@
 
 <div class="container mb-5 mt-1" style="border: 0.2px solid dodgerblue">
 
-    <div id="logo" role="banner"><a href='${createLink(uri: "/?lang=${session?.lang != null ? session?.lang : ''}")}'>
+    <div id="logo" role="banner"><a href='${createLink(uri: "/?lang=${session?.lang != null ? session?.lang : 'an'}")}'>
         <img style="width: 100%;height: 400px;background-size:cover " src="${resource(dir: 'images', file: 'log.png')}"
              alt="TekDays"/></a>
 

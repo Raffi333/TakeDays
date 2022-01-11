@@ -12,6 +12,8 @@ class TekUser {
     String email
     String website
     String bio
+    boolean confirm = false
+    String confirmCode
 
 
 //    transient beforeDelete = {
@@ -19,22 +21,19 @@ class TekUser {
 //    }
 
 
-
 //    static def belongsTo = TekEvent
     static def constraints = {
+        confirm()
         fullName()
         userName()
         email()
         website()
-        bio maxSize: 5000,nullable: false
+        bio maxSize: 5000, nullable: false
     }
 
 
-
-
-
     @Override
-     String toString() {
+    String toString() {
         return "${fullName}"
     }
 

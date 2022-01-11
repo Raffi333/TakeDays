@@ -22,13 +22,9 @@ import static org.springframework.http.HttpStatus.*
 class TekUserController {
 
 
-    static k = 0;
-    static def m = 0;
-    static final Object obj = new Object()
-
-
     EnversService enversService
     SessionFactory sessionFactory
+    EmailService emailService
 
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
@@ -36,6 +32,7 @@ class TekUserController {
     @Transactional
 //    @Synchronized('obj')
     def index(Integer max) {
+
 //        [
 //                allEntity   : [
 //                        TekUser.findAll(),
